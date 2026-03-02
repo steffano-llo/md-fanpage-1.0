@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madison Beer | Good In Goodbye</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/project.css">
+
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">madison beer</a>
+        <nav class="nav-links">
+            <a href="gallery.html" class="nav-link">GALLERY</a>
+            <a href="music.html" class="nav-link">MUSIC</a>
+            <a href="info.html" class="nav-link">INFO</a>
+        </nav>
+    </header>
+
+    <!-- Project Full Video -->
+    <section class="project-video-section">
+        <div class="iframe-responsive-container">
+            <iframe src="https://www.youtube.com/embed/rQZJsOSw1pU?autoplay=1&mute=1"
+                title="Madison Beer - Good In Goodbye" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen class="project-video-iframe"></iframe>
+        </div>
+        <div class="streaming-links icon-row">
+            <a href="https://open.spotify.com/intl-es/track/4y3g40TWe7fCWCayJZuGvw?si=4f697ee870f34ac2" target="_blank"
+                class="stream-icon" title="Listen on Spotify"><i class="fab fa-spotify"></i></a>
+
+            <a href="#" target="_blank" title="Listen on Apple Music" class="stream-icon"><i
+                    class="fab fa-apple"></i></a>
+
+            <a href="#" target="_blank" title="Listen on YouTube Music" class="stream-icon"><i
+                    class="fab fa-youtube"></i></a>
+
+            <a href="#" target="_blank" title="Listen on Amazon Music" class="stream-icon"><i
+                    class="fab fa-amazon"></i></a>
+        </div>
+    </section>
+
+    <!-- Video Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">ALL</button>
+            <button class="filter-btn" data-filter="locket">LOCKET</button>
+            <button class="filter-btn" data-filter="life-support">LIFE SUPPORT</button>
+            <button class="filter-btn" data-filter="silence-between-songs">SILENCE BETWEEN SONGS</button>
+            <button class="filter-btn" data-filter="as-she-pleases">AS SHE PLEASES</button>
+        </div>
+
+        <div class="gallery-grid">
+            <!-- Video Item 1 (Bad Enough) -->
+            <div class="video-item" data-page="md-badenough.html" data-album="locket">
+                <div class="thumbnail-wrapper">
+                    <img src="assets/images/thumb-badenough.jpg" alt="Bad Enough" class="thumbnail">
+                    <video class="hover-video" src="assets/videos/preview/md-badenough-preview.mp4" muted loop
+                        playsinline></video>
+                    <div class="hover-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Bad Enough</h3>
+                    <p class="video-director">Locket (Album)</p>
+                </div>
+            </div>
+
+            <!-- Video Item 2 (Selfish with Preview) -->
+            <div class="video-item" data-page="md-selfish.html" data-album="life-support">
+                <div class="thumbnail-wrapper">
+                    <img src="assets/images/thumb-selfish.jpg" alt="Selfish" class="thumbnail">
+                    <video class="hover-video" src="assets/videos/preview/md-selfish-preview.mp4" muted loop
+                        playsinline></video>
+                    <div class="hover-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Selfish</h3>
+                    <p class="video-director">Life Support (Album)</p>
+                </div>
+            </div>
+
+            <!-- Video Item 3 -->
+            <div class="video-item" data-page="md-makeyoumine.html" data-album="locket">
+                <div class="thumbnail-wrapper">
+                    <img src="assets/images/thumb-makeyoumine.jpg" alt="Make You Mine" class="thumbnail">
+                    <video class="hover-video" src="assets/videos/preview/md-makeyoumine-preview.mp4" muted loop
+                        playsinline></video>
+                    <div class="hover-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Make You Mine</h3>
+                    <p class="video-director">Locket (Album)</p>
+                </div>
+            </div>
+
+            <!-- Video Item 4 -->
+            <div class="video-item" data-page="md-spinnin.html" data-album="silence-between-songs">
+                <div class="thumbnail-wrapper">
+                    <img src="assets/images/thumb-spinnin.jpg" alt="Spinnin" class="thumbnail">
+                    <video class="hover-video" src="assets/videos/preview/md-spinnin-preview.mp4" muted loop
+                        playsinline></video>
+                    <div class="hover-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Spinnin</h3>
+                    <p class="video-director">Silence Between Songs (Album)</p>
+                </div>
+            </div>
+
+            <!-- Video Item 5 -->
+            <div class="video-item" data-page="md-goodingoodbye.html" data-album="life-support">
+                <div class="thumbnail-wrapper">
+                    <img src="assets/images/thumb-goodingoodbye.jpg" alt="Good In Goodbye" class="thumbnail">
+                    <video class="hover-video" src="assets/videos/preview/md-goodingoodbye-preview.mp4" muted loop
+                        playsinline></video>
+                    <div class="hover-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Good In Goodbye</h3>
+                    <p class="video-director">Life Support (Album)</p>
+                </div>
+            </div>
+
+            <!-- Video Item 6 -->
+            <div class="video-item" data-page="md-reckless.html" data-album="silence-between-songs">
+                <div class="thumbnail-wrapper">
+                    <img src="assets/images/thumb-reckless.jpg" alt="Reckless" class="thumbnail">
+                    <video class="hover-video" src="assets/videos/preview/md-reckless-preview.mp4" muted loop
+                        playsinline></video>
+                    <div class="hover-overlay">
+                        <span class="play-icon">▶</span>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Reckless</h3>
+                    <p class="video-director">Silence Between Songs (Album)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="info" class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.instagram.com/madisonbeer/" target="_blank">INSTAGRAM</a>
+                <a href="https://twitter.com/madisonbeer" target="_blank">TWITTER</a>
+                <a href="https://open.spotify.com/intl-es/artist/2kRfqPViCqYdSGhYSM9R0Q" target="_blank">SPOTIFY</a>
+                <a href="https://www.youtube.com/channel/UC7zjjW_bvcVsPcBiqUPJf1w" target="_blank">YOUTUBE</a>
+            </div>
+            <p class="copyright" style="margin-bottom: 0.5rem;">© 2026 Madison Beer.</p>
+            <p class="copyright" style="font-size: 0.7rem; max-width: 600px; margin: 0 auto; line-height: 1.5;">This is
+                a conceptual fan-made portfolio project. This website is not affiliated with, endorsed by, or sponsored
+                by Madison Beer or her management. All rights to audio and visual content belong to their respective
+                owners.</p>
+        </div>
+    </footer>
+
+    <!-- Custom Scripts -->
+    <script src="assets/js/script.js"></script>
+    <!-- Add Project specific script -->
+    <script src="assets/js/project.js"></script>
+</body>
+
+</html>

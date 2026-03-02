@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madison Beer | Info</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/project.css">
+
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">madison beer</a>
+        <nav class="nav-links">
+            <a href="gallery.html" class="nav-link">GALLERY</a>
+            <a href="music.html" class="nav-link">MUSIC</a>
+            <a href="#" class="nav-link">INFO</a>
+        </nav>
+    </header>
+
+    <!-- Info Section (Shares 'hero' class to reuse spotlight JS logic) -->
+    <section id="info-content" class="info-page-section hero" style="opacity: 0;">
+        <img src="assets/images/bg-info.jpg" alt="Madison Beer Background" class="base-bg">
+
+        <!-- Blurred Overlay with Dynamic Transparent Mask (Spotlight) -->
+        <div class="overlay-blur info-spotlight"></div>
+
+        <div class="info-content-wrapper layer-text">
+            <h1 class="info-title">MADISON BEER</h1>
+            <p class="info-description">
+                Madison Elle Beer is an American singer, songwriter, and producer.
+                Born in New York, she gained early recognition for her vocal talent and has since evolved into a
+                versatile artist known for her cinematic pop sound and introspective songwriting.
+            </p>
+            <div class="info-socials">
+                <a href="https://www.instagram.com/madisonbeer/" target="_blank" class="info-social-link">INSTAGRAM</a>
+                <a href="https://twitter.com/madisonbeer" target="_blank" class="info-social-link">TWITTER</a>
+                <a href="https://open.spotify.com/intl-es/artist/2kRfqPViCqYdSGhYSM9R0Q" target="_blank"
+                    class="info-social-link">SPOTIFY</a>
+                <a href="https://www.youtube.com/channel/UC7zjjW_bvcVsPcBiqUPJf1w" target="_blank"
+                    class="info-social-link">YOUTUBE</a>
+            </div>
+            <p class="copyright"
+                style="margin: 3rem auto 0 auto; font-size: 0.75rem; color: rgba(255, 255, 255, 0.4); line-height: 1.5; text-align: center; max-width: 600px;">
+                Disclaimer: This is a conceptual fan-made portfolio project. This website is not affiliated with,
+                endorsed by, or sponsored by Madison Beer or her management. All rights to audio and visual content
+                belong to their respective owners.
+            </p>
+        </div>
+    </section>
+
+    <!-- Custom Scripts -->
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/project.js"></script>
+</body>
+
+</html>

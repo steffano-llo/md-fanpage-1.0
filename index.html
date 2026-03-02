@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madison Beer | Cinematography</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- GSAP for Animations (optional but adds premium feel) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <a href="#" class="logo">madison beer</a>
+        <nav class="nav-links">
+            <a href="gallery.html" class="nav-link">GALLERY</a>
+            <a href="music.html" class="nav-link">MUSIC</a>
+            <a href="info.html" class="nav-link">INFO</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="video-container">
+            <video class="bg-video" autoplay loop muted playsinline>
+                <source src="assets/videos/preview/md-badenough-preview.mp4" type="video/mp4">
+            </video>
+        </div>
+        <!-- Blurred Overlay with Dynamic Transparent Mask -->
+        <div class="overlay-blur"></div>
+
+        <!-- Sharp Top Layer: Text & UI -->
+        <div class="hero-layer layer-text">
+            <div class="hero-content">
+                <h1 class="hero-title" id="dynamicTitle">BAD ENOUGH</h1>
+                <p class="hero-subtitle" id="dynamicSubtitle">Locket (Album)</p>
+            </div>
+        </div>
+
+        <!-- Left Side Video Navigation -->
+        <div class="video-nav-control left" id="prevVideoBtn">
+            <span class="nav-counter" id="videoCounterPrev">1/6</span>
+            <span class="nav-label">PREVIOUS</span>
+        </div>
+
+        <!-- Right Side Video Navigation -->
+        <div class="video-nav-control right" id="nextVideoBtn">
+            <span class="nav-label">NEXT</span>
+            <span class="nav-counter" id="videoCounterNext">1/6</span>
+        </div>
+    </section>
+
+    <!-- Custom Scripts -->
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

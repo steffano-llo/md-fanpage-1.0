@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #050505;
+    --text-color: #f5f5f5;
+    --accent-color: rgba(255, 255, 255, 0.6);
+    --font-heading: 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Typography Selection */
+::selection {
+    background: var(--text-color);
+    color: var(--bg-color);
+}
+
+/* --- Header / Navigation --- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    mix-blend-mode: difference;
+    /* Ensures visibility over light/dark backgrounds */
+}
+
+.logo {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    /* Larger size to compensate for cursive delicate strokes */
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--text-color);
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    /* Keep the bounding box tight */
+}
+
+/* Optional hover interaction for the text logo */
+.logo:hover {
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+}
+
+.nav-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--accent-color);
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.nav-link:hover {
+    color: var(--text-color);
+}
+
+/* --- Hero Section --- */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+    /* Added pointer cursor to indicate clickability to the respective video */
+    --cursor-x: -100px;
+    --cursor-y: -100px;
+}
+
+/* Force default cursor on info page since background is not a clickable video */
+.info-page-section.hero {
+    cursor: default;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    /* Let clicks pass through */
+}
+
+/* Force iframe to cover the container */
+.bg-video {
+    width: 100vw;
+    height: 56.25vw;
+    /* 16:9 aspect ratio */
+    min-height: 100vh;
+    min-width: 177.77vh;
+    /* 16:9 aspect ratio */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.6;
+    /* Dim the video slightly so text pops */
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--accent-color);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* --- Interactive Blur Mask Effect --- */
+.hero-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.overlay-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.2);
+    /* Sutil oscurecimiento sobre el foco borroso */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    pointer-events: none;
+
+    /* La máscara aplica el desenfoque SOLO bajo el cursor */
+    /* En el centro es visible (negro), y se difumina hacia transparente en los bordes */
+    mask-image: radial-gradient(circle 350px at var(--cursor-x) var(--cursor-y), black 0%, rgba(0, 0, 0, 0.5) 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle 350px at var(--cursor-x) var(--cursor-y), black 0%, rgba(0, 0, 0, 0.5) 40%, transparent 100%);
+}
+
+.layer-text {
+    z-index: 4;
+}
+
+.layer-text .hero-content {
+    /* El texto inicia difuminado */
+    filter: blur(15px);
+    opacity: 0.6;
+    transition: filter 1s ease, opacity 1s ease;
+}
+
+/* Esta clase se agregará con JS cuando el usuario mueva el ratón al video */
+.layer-text .hero-content.is-focused,
+.layer-text.is-focused .hero-content {
+    filter: blur(0px);
+    opacity: 1;
+}
+
+/* Optional hover interaction on the text itself */
+.layer-text .hero-content:hover {
+    pointer-events: auto;
+    /* Optional: scale slightly when hovered */
+    transform: translate(-50%, -50%) scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+/* --- Video Navigation --- */
+.video-nav-control {
+    position: absolute;
+    top: 0;
+    width: 400px;
+    /* Ancho ampliado del área clickeable */
+    height: 100%;
+    /* Todo el alto de la pantalla */
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    /* Centrado vertical */
+    gap: 1rem;
+    cursor: pointer;
+    pointer-events: auto;
+    /* Efecto hover opcional: ligero gradiente para visualizar el area */
+    /* background: linear-gradient(to right, rgba(255,255,255,0.05), transparent); */
+}
+
+/* El texto y contador están invisibles por defecto */
+.video-nav-control span {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Al poner el ratón sobre el rectángulo, se revela el texto */
+.video-nav-control:hover span {
+    opacity: 1;
+}
+
+.video-nav-control.left {
+    left: 0;
+    justify-content: flex-start;
+    padding-left: 4rem;
+    /* Margen interior para el texto */
+    /* Efecto hover opcional: ligero gradiente para visualizar el area */
+    /* background: linear-gradient(to right, rgba(255,255,255,0.05), transparent); */
+}
+
+.video-nav-control.right {
+    right: 0;
+    justify-content: flex-end;
+    padding-right: 4rem;
+    /* Margen interior para el texto */
+    /* background: linear-gradient(to left, rgba(255,255,255,0.05), transparent); */
+}
+
+.nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.nav-counter {
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1024px) {
+    .header {
+        padding: 1.5rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        /* Hide nav links on very small screens, keep just logo */
+    }
+}

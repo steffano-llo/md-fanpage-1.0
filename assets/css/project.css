@@ -1,0 +1,522 @@
+/* --- Global Scrollbar Hiding --- */
+html,
+body {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari and Opera */
+}
+
+/* --- Project Video Section --- */
+.header {
+    filter: blur(6px);
+    opacity: 0.5;
+    transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+.header:hover {
+    filter: blur(0);
+    opacity: 1;
+}
+
+.project-video-section {
+    padding: 10rem 1rem 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.iframe-responsive-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    /* Max width for large screens */
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.project-video-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.streaming-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 2rem;
+    pointer-events: none;
+    /* Prevent invisible container from blocking gallery clicks */
+}
+
+.stream-btn,
+.stream-icon {
+    pointer-events: auto;
+    /* Re-enable clicks specifically for the buttons */
+}
+
+.stream-btn {
+    padding: 0.8rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.stream-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.icon-row {
+    gap: 2rem;
+}
+
+.stream-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.stream-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+.project-info {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.project-title {
+    font-size: 3rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.project-credits {
+    font-size: 1rem;
+    color: var(--accent-color);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* --- Video Gallery Grid (Restored for inner pages) --- */
+.gallery-section {
+    padding: 2rem 1rem 8rem 1rem;
+    background-color: var(--bg-color);
+    position: relative;
+    z-index: 10;
+}
+
+/* --- Filter Menu --- */
+.gallery-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.filter-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding-bottom: 5px;
+    border-bottom: 1px solid transparent;
+}
+
+.filter-btn:hover {
+    color: #fff;
+}
+
+.filter-btn.active {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.hidden-item {
+    display: none !important;
+}
+
+.gallery-page-view {
+    padding-top: 10rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.video-item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.video-item:hover {
+    transform: translateY(-15px);
+}
+
+.thumbnail-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+}
+
+.hover-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    /* Above the thumbnail */
+}
+
+/* On hover, fade out thumbnail, fade in video */
+.video-item:hover .thumbnail {
+    opacity: 0;
+    transform: scale(1.05);
+    /* keep zoom effect */
+}
+
+.video-item:hover .hover-video {
+    opacity: 1;
+}
+
+.hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.play-icon {
+    font-size: 3rem;
+    color: white;
+    transform: scale(0.8);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.video-item:hover .thumbnail {
+    transform: scale(1.05);
+}
+
+.video-item:hover .hover-overlay {
+    opacity: 1;
+}
+
+.video-item:hover .play-icon {
+    transform: scale(1);
+}
+
+.video-item:hover .video-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.video-info {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.video-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+    letter-spacing: -0.02em;
+}
+
+.video-director {
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    font-weight: 300;
+}
+
+/* --- Footer / Info Section --- */
+.footer {
+    padding: 8rem 2rem;
+    text-align: center;
+    background-color: var(--bg-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+}
+
+.email-link {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    margin-bottom: 4rem;
+    font-weight: 300;
+    transition: opacity 0.3s ease;
+}
+
+.email-link:hover {
+    opacity: 0.7;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.social-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--text-color);
+}
+
+.copyright {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .video-info {
+        bottom: 1rem;
+        left: 1rem;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 0.5rem;
+        border-radius: 4px;
+    }
+}
+
+/* --- Info Page Styling --- */
+.info-page-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10rem 2rem 4rem 2rem;
+    overflow: hidden;
+}
+
+.base-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.info-spotlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-image: url('../images/bg-info.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(12px) brightness(0.6);
+    transform: scale(1.05);
+    /* hide blur edges */
+    mask-image: radial-gradient(circle 250px at var(--cursor-x, -1000px) var(--cursor-y, -1000px), transparent 0%, black 100%);
+    -webkit-mask-image: radial-gradient(circle 250px at var(--cursor-x, -1000px) var(--cursor-y, -1000px), transparent 0%, black 100%);
+    transition: filter 0.4s ease;
+}
+
+.info-content-wrapper {
+    position: relative;
+    z-index: 10;
+    /* Above the overlay and blur */
+    max-width: 800px;
+    margin: 0 auto;
+    /* Center it */
+    text-align: center;
+    /* Center text */
+    /* Starting state for animation */
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.info-title {
+    font-size: 4rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+
+.info-description {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #eaeaea;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.info-socials {
+    display: flex;
+    justify-content: center;
+    /* Center the links */
+    flex-wrap: wrap;
+    /* allow wrapping on small screens */
+    gap: 2rem;
+    /* Increase gap for horizontal layout */
+}
+
+.info-social-link {
+    font-size: 1rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    width: fit-content;
+}
+
+.info-social-link:hover {
+    color: var(--text-color);
+}
+
+/* --- Photo Gallery (Masonry Layout) --- */
+.photo-gallery-section {
+    padding: 10rem 2rem 6rem 2rem;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
+
+.photo-grid {
+    column-count: 3;
+    column-gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.photo-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    /* Starting state for GSAP animation */
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.photo-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover effects */
+.photo-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Dim unfocused images when hovering the grid */
+.photo-grid:hover .photo-item:not(:hover) {
+    opacity: 0.5 !important;
+    /* overrides GSAP opacity to dim */
+    transition: opacity 0.4s ease;
+}
+
+@media (max-width: 1024px) {
+    .photo-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .photo-grid {
+        column-count: 1;
+    }
+}
