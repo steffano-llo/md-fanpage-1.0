@@ -37,12 +37,66 @@
 
     <!-- Project Full Video -->
     <section class="project-video-section">
-        <div class="iframe-responsive-container">
-            <iframe src="https://www.youtube.com/embed/92SUQBeE5GQ?autoplay=1&mute=1" title="Madison Beer - Bad Enough"
-                frameborder="0"
+        <div class="iframe-responsive-container" style="position: relative;">
+            <iframe id="youtube-player"
+                src="https://www.youtube.com/embed/92SUQBeE5GQ?autoplay=0&mute=0&controls=0&disablekb=1&modestbranding=1&enablejsapi=1&rel=0&iv_load_policy=3"
+                title="Madison Beer - Bad Enough" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen class="project-video-iframe"></iframe>
+
+            <!-- Creative Video Title Overlay -->
+            <div class="video-overlay-title" id="video-title-anim"
+                style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 4rem 2rem 2rem 2rem; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 100%); pointer-events: none; opacity: 0; transform: translateY(20px); display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;">
+                <h1 class="project-title"
+                    style="font-size: 4rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; text-shadow: 0 4px 20px rgba(0,0,0,0.8); line-height: 1;">
+                    Bad Enough</h1>
+                <div style="display: flex; align-items: center; gap: 1.5rem; pointer-events: auto;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <span
+                            style="display: inline-block; width: 40px; height: 1px; background-color: var(--accent-color);"></span>
+                        <p class="project-credits"
+                            style="font-size: 0.9rem; color: #fff; letter-spacing: 4px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); margin: 0;">
+                            Madison Beer &nbsp;|&nbsp; Locket</p>
+                    </div>
+
+                    <!-- Custom Audio Controls -->
+                    <div style="display: flex; align-items: center; gap: 0.8rem;">
+                        <button id="custom-play-btn"
+                            style="background: transparent; border: none; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; cursor: pointer; color: white; transition: all 0.3s ease;">
+                            <i class="fas fa-play" id="play-icon"></i>
+                        </button>
+                        <button id="custom-audio-btn"
+                            style="background: transparent; border: none; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; cursor: pointer; color: white; transition: all 0.3s ease;">
+                            <i class="fas fa-volume-up" id="audio-icon"></i>
+                        </button>
+                        <div class="volume-slider-container" style="width: 80px; display: flex; align-items: center;">
+                            <input type="range" id="volume-slider" min="0" max="100" value="100"
+                                style="width: 100%; height: 3px; -webkit-appearance: none; appearance: none; accent-color: white; background: rgba(255,255,255,0.3); border-radius: 5px; outline: none; cursor: pointer; opacity: 0.7; transition: opacity 0.2s;">
+                            <!-- Adding a tiny bit of CSS in project.css for the slider thumb for better cross-browser compatibility -->
+                        </div>
+
+                        <!-- Fullscreen Button -->
+                        <button id="custom-fullscreen-btn"
+                            style="background: transparent; border: none; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; cursor: pointer; color: white; transition: all 0.3s ease; margin-left: 1rem;">
+                            <i class="fas fa-expand" id="fullscreen-icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Minimalist Progress Bar -->
+            <div id="progress-container"
+                style="position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.1); cursor: pointer; z-index: 10;">
+                <div id="progress-bar"
+                    style="height: 100%; width: 0%; background: var(--accent-color); transition: width 0.1s linear;">
+                </div>
+            </div>
+
         </div>
+
+        <!-- Load YouTube Iframe API -->
+        <script src="https://www.youtube.com/iframe_api"></script>
+
         <div class="streaming-links icon-row">
             <a href="https://open.spotify.com/intl-es/track/01aNqddaggrPJYUIdRApRD?si=9fedac08f6654996" target="_blank"
                 class="stream-icon" title="Listen on Spotify"><i class="fab fa-spotify"></i></a>
